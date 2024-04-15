@@ -36,5 +36,30 @@ const myFunction=function(){
 
 //console.log(typeof myFunction) //return function which is object function.
 
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Stack(Primitive), heap(Non- primitive)
+let myYoutubename="abhishek";//stack
+
+let anothername=myYoutubename// copy of myYoutube name is provided not the variable
+anothername="abhishektulekar"// as copy is provided no change in original variable
+
+// console.log(myYoutubename);
+// console.log(anothername);
+
+//heap
+let userOne={
+    email:"user@google.com",
+    ipi:"user@ybl"
+}
+//always a reference to the heap is provided 
+let userTwo=userOne;
+//If value at user2 is changed the value at user one is also change as both user1 and user2 
+//are pointing at same value in heap
+userTwo.email="user2@google.com"
+
+console.log(userOne.email)
+console.log(userTwo.email)
+
+
 
 
