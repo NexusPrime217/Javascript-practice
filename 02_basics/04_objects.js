@@ -50,7 +50,24 @@ const user=[
 // console.log(Object.entries(tinderUser));
 
 
-console.log(tinderUser.hasOwnProperty('name'));//true
-console.log(tinderUser.hasOwnProperty('ida'));//false
+// console.log(tinderUser.hasOwnProperty('name'));//true
+// console.log(tinderUser.hasOwnProperty('ida'));//false
+
+
+const course={
+    coursename:"JS",
+    price:"999",
+    courseInstructor:"Abhishek"
+}
+
+// course.cousrename
+//alternative of above
+
+const {courseInstructor:instructor}=course //destructuring
+// console.log(courseInstructor);
+console.log(instructor);
+
+
+
 
 
