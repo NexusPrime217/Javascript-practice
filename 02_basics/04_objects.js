@@ -60,14 +60,9 @@ const course={
     courseInstructor:"Abhishek"
 }
 
-// course.cousrename
+//course.coursename
 //alternative of above
 
 const {courseInstructor:instructor}=course //destructuring
 // console.log(courseInstructor);
 console.log(instructor);
-
-
-
-
-
