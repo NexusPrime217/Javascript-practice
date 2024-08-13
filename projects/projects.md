@@ -56,7 +56,19 @@ form.addEventListener('submit', (e) => {
   }
 });
 ```
+## Project 3:Digital Clock
+[Digital Clock](https://stackblitz.com/edit/dom-project-chaiaurcode-sl2n5w?file=3-DigitalClock%2Findex.html)
 
+```
+const clock = document.querySelector('#clock');
+
+setInterval(() => {
+  let date = new Date();
+  let time = date.toLocaleTimeString();
+  clock.innerHTML = `<h3>${time}</h3>`;
+}, 1000);
+//Runs the function provided as parameter at given interval of time(in msec).
+```
 
 
 
