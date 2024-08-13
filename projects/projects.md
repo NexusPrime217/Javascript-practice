@@ -69,6 +69,95 @@ setInterval(() => {
 }, 1000);
 //Runs the function provided as parameter at given interval of time(in msec).
 ```
+# Project 4: Guess a number
+[Guess a number](https://stackblitz.com/edit/dom-project-chaiaurcode-sl2n5w?file=4-GuessTheNumber%2Findex.html)
 
+```
+const form = document.querySelector('form');
+let answer = Math.floor(Math.random() * 100 + 1);
+const guesses = document.querySelector('.guesses');
+let remaining = document.querySelector('.lastResult');
+let playGame = true;
+let Totaltry = 1;
+const result = document.querySelector('.lowOrHi');
+const startOver = document.querySelector('.resultParas');
+
+const retry = document.createElement('p');
+
+//let guessArray = [];
+//console.log(answer);
+if (playGame) {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const guess = parseInt(document.querySelector('#guessField').value);
+    validateGuess(guess);
+  });
+}
+
+function validateGuess(guess) {
+  if (isNaN(guess)) {
+    alert('Please enter a valid number');
+  } else if (guess < 1 || guess > 100) {
+    alert('Please enter a number between 1 and 100');
+  } else {
+    if (Totaltry == 10) {
+      endGame();
+      displayMessage(`Game Over. Random number was ${answer}`);
+    } else {
+      // Totaltry++;
+      addGuess(guess);
+      checkAnswer(guess);
+    }
+  }
+}
+
+//check is answer is correct high or low.
+function checkAnswer(guess) {
+  if (guess < answer) {
+    displayMessage(`Guess too low!`);
+  } else if (guess > answer) {
+    displayMessage(`Guess too high!`);
+  } else if (guess === answer) {
+    displayMessage(`You guess correctly!`);
+    endGame();
+  }
+}
+
+//add guess in previous guess and update total guesses.
+function addGuess(guess) {
+  document.querySelector('#guessField').value = '';
+  Totaltry++;
+  guesses.innerHTML += `${guess}, `;
+  remaining.innerHTML = `${11 - Totaltry}`;
+}
+
+//display whatever message is given
+function displayMessage(Message) {
+  // document.querySelector('#guessField').value = '';
+  result.innerHTML = `<h3>${Message}</h3>`;
+}
+
+function endGame() {
+  document.querySelector('#guessField').value = '';
+  document.querySelector('#guessField').setAttribute('disabled', '');
+  // displayMessage('Game Over');
+  remaining.innerHTML = `0`;
+  retry.innerHTML = `<button id="newGame">Try again</h2>`;
+  startOver.appendChild(retry);
+  newGame();
+}
+function newGame() {
+  const retryButton = document.querySelector('#newGame');
+  retryButton.addEventListener('click', (e) => {
+    answer = Math.floor(Math.random() * 100 + 1);
+    Totaltry = 1;
+    guesses.innerHTML = '';
+    remaining.innerHTML = `${11 - Totaltry}`;
+    startOver.removeChild(retry);
+    document.querySelector('#guessField').removeAttribute('disabled');
+    playGame = true;
+  });
+}
+```
 
 
