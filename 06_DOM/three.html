@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM element creation and deletion</title>
+</head>
+<body style="background-color: #212121; color:#fff">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+    function addItem(langName){
+        const li=document.createElement('li')
+        li.innerHTML=`${langName}`
+        document.querySelector('.language').appendChild(li)
+    }
+    addItem('Python')
+    //optimized way
+    function addItem_Optimized(langName){
+        const li=document.createElement('li')
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector('.language').appendChild(li)
+    }
+    addItem_Optimized('TypeScript')
+    addItem_Optimized('C++')
+
+    //edit-1
+    const secItem=document.querySelector('li:nth-child(2)')
+    const newItem=document.createElement('li')
+    newItem.textContent='Golang'
+    secItem.replaceWith(newItem)
+
+    //edit-2
+    const firstLang=document.querySelector('li:first-child')
+    firstLang.outerHTML='<li>C</li>'
+
+    //remove
+    const lastLang=document.querySelector('li:last-child')
+    lastLang.remove()
+</script>
+</html>
