@@ -160,4 +160,66 @@ function newGame() {
 }
 ```
 
+# Project 5: Keyboard Check
+[Keyboard Check](https://stackblitz.com/edit/dom-project-chaiaurcode-sl2n5w?file=5-keyboard%2Findex.html)
+
+```
+// console.log('Project 5');
+const insert = document.getElementById('insert');
+
+window.addEventListener('keydown', (e) => {
+  insert.innerHTML = `
+    <div class='color'>
+    <table>
+      <tr>
+        <th>Key</th>
+        <th>KeyCode</th>
+        <th>Code</th>
+      </tr>
+      <tr>
+        <td>${e.key === ' ' ? 'Space' : e.key}</td>
+        <td>${e.keyCode}</td>
+        <td>${e.code}</td>
+      </tr>
+      
+    </table>
+    </div>`;
+  // console.log(insert.innerHTML);
+});
+```
+
+# Project 6: Unlimited color
+[Unlimited Color](https://stackblitz.com/edit/dom-project-chaiaurcode-sl2n5w?file=6-unlimitedColors%2Findex.html)
+
+```
+const start=document.getElementById('start')
+const stop=document.getElementById('stop')
+const body=document.body
+
+//generate a random color
+const randomColor=function(){
+  const hex='0123456789ABCDEF'
+  let color='#'
+  for (let i=0;i<6;i++){
+    let index=parseInt(Math.random()*16)
+    color=color+hex[index];    
+  }
+  return color;
+}
+
+const BGcolor=function(){
+  body.style.backgroundColor=randomColor()
+}
+let IntervalID
+start.addEventListener('click',()=>{  
+  if (!IntervalID)
+      IntervalID=setInterval(BGcolor,1000)
+})
+
+stop.addEventListener('click',()=>{
+  clearInterval(IntervalID)
+  IntervalID=null  //optimised
+})
+```
+
 
