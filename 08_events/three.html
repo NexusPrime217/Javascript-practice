@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121; color:aliceblue">
+    <h1>Async coding-2</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+        const sayDate= function (str){
+            console.log(str,Date.now());
+            
+        }
+        let IntervalID;
+
+        const start=document.querySelector('#start')
+        start.addEventListener('click',()=>{
+            if (!IntervalID){
+                IntervalID=setInterval(sayDate,1000,'abhi')
+            }
+        },false)
+
+        const stop=document.querySelector('#stop')
+        stop.addEventListener('click',()=>{
+            clearInterval(IntervalID)
+            IntervalID=null
+            
+        })
+
+</script>
+</html>
